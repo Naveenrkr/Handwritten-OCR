@@ -1,0 +1,38 @@
+[project]
+name = "vision-project"
+version = "0.1.0"
+description = "Modular PyTorch computer vision project optimized for 6GB VRAM GPU training"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "torch>=2.2.0",
+    "torchvision>=0.17.0",
+    "opencv-python>=4.9.0",
+    "typer>=0.12.0",
+    "onnx>=1.16.0",
+    "onnxruntime>=1.17.0",
+]
+
+[project.scripts]
+vision-cli = "vision_project.cli:app"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.uv]
+dev-dependencies = [
+    "pytest>=8.0.0",
+    "ruff>=0.4.0",
+]
+
+# PyTorch CUDA configuration for uv (CUDA 12.1 / 11.8):
+# Uncomment the following lines if you want uv to fetch CUDA-enabled PyTorch wheels automatically:
+# [tool.uv.sources]
+# torch = { index = "pytorch-cu121" }
+# torchvision = { index = "pytorch-cu121" }
+#
+# [[tool.uv.index]]
+# name = "pytorch-cu121"
+# url = "https://download.pytorch.org/whl/cu121"
+# explicit = true
